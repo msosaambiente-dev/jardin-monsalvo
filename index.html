@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jardín de Monsalvo - Calamuchita, Córdoba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7a8c6e;
+    --sage-light: #a8b89a;
+    --sage-dark: #4a5c40;
+    --earth: #8b6b4a;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --bark: #3d2e1e;
+    --moss: #5a6b4e;
+    --sky: #c8d8c2;
+    --red-berries: #8b3a3a;
+    --gold: #c9a84c;
+    --text: #2e2416;
+    --text-light: #6b5840;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    position: relative;
+    background: linear-gradient(160deg, var(--sage-dark) 0%, var(--moss) 50%, var(--sage) 100%);
+    padding: 3.5rem 2rem 4rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .leaf-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cellipse cx='100' cy='100' rx='60' ry='90' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='100' y1='10' x2='100' y2='190' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='100' y1='60' x2='60' y2='90' stroke='%23fff' stroke-width='0.8'/%3E%3Cline x1='100' y1='80' x2='140' y2='110' stroke='%23fff' stroke-width='0.8'/%3E%3Cline x1='100' y1='100' x2='55' y2='125' stroke='%23fff' stroke-width='0.8'/%3E%3Cline x1='100' y1='120' x2='145' y2='145' stroke='%23fff' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+  }
+
+  .reserve-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 0.6rem;
+    opacity: 0.9;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--sky);
+  }
+
+  .header-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ─── INTRO SECTION ─── */
+  .intro {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    color: var(--sage-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sage-light);
+    opacity: 0.5;
+  }
+
+  /* ─── MAIN CONTAINER ─── */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ─── TABS ─── */
+  .tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    background: var(--cream-dark);
+    border-radius: 60px;
+    padding: 5px;
+    border: 1px solid rgba(122,140,110,0.2);
+  }
+
+  .tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0.65rem 1rem;
+    border-radius: 60px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+  }
+
+  .tab-btn.active {
+    background: var(--sage-dark);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ─── CARD ─── */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(122,140,110,0.15);
+    box-shadow: 0 2px 20px rgba(74,92,64,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--sage);
+    border-radius: 4px 0 0 4px;
+  }
+
+  .card.earth::before { background: var(--earth); }
+  .card.berries::before { background: var(--red-berries); }
+  .card.gold::before { background: var(--gold); }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--sage-dark);
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card.earth .card-title { color: var(--earth); }
+  .card.berries .card-title { color: var(--red-berries); }
+  .card.gold .card-title { color: var(--bark); }
+
+  .card-desc {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* ─── FORM ELEMENTS ─── */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(168,184,154,0.2);
+  }
+  .field-row:last-child { border-bottom: none; }
+
+  .field-label {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .field-hint {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    display: block;
+    margin-top: 0.15rem;
+    line-height: 1.4;
+  }
+
+  .field-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .field-input input[type="number"] {
+    width: 80px;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid rgba(122,140,110,0.3);
+    border-radius: 8px;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    text-align: center;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  .field-input input[type="number"]::-webkit-inner-spin-button,
+  .field-input input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+  .field-input input[type="number"]:focus {
+    outline: none;
+    border-color: var(--sage);
+    background: #fff;
+  }
+
+  .unit-label {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    min-width: 30px;
+  }
+
+  /* Transport select */
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .transport-option {
+    position: relative;
+  }
+  .transport-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .transport-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.7rem 0.5rem;
+    border: 1.5px solid rgba(122,140,110,0.25);
+    border-radius: 12px;
+    background: var(--cream);
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    transition: all 0.2s;
+    line-height: 1.3;
+  }
+  .transport-option input:checked + label {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+    color: #fff;
+  }
+  .transport-option label .icon { font-size: 1.4rem; }
+
+  /* ─── FIXED MERIENDA ─── */
+  .merienda-info {
+    background: linear-gradient(135deg, #f9f5ee, #eee8da);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .merienda-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--bark);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .merienda-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .merienda-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .merienda-item .dot {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-top: 0.05rem;
+    flex-shrink: 0;
+  }
+
+  .reserve-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(90,107,78,0.1);
+    color: var(--sage-dark);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid rgba(90,107,78,0.2);
+    margin-top: 0.2rem;
+  }
+
+  /* ─── CALCULATE BTN ─── */
+  .calc-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--sage-dark);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .calc-btn:hover { background: var(--moss); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(74,92,64,0.25); }
+  .calc-btn:active { transform: translateY(0); }
+
+  /* ─── RESULTS ─── */
+  #results-panel {
+    display: none;
+    animation: fadeUp 0.4s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-hero {
+    background: linear-gradient(135deg, var(--sage-dark), var(--moss));
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='80' r='40' fill='rgba(255,255,255,0.04)'/%3E%3Ccircle cx='80' cy='20' r='30' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") no-repeat center;
+    background-size: cover;
+  }
+
+  .result-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-total {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .result-unit {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+  .result-context {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 0.8rem;
+    line-height: 1.5;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Bar chart */
+  .breakdown-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(122,140,110,0.15);
+  }
+
+  .breakdown-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--sage-dark);
+    margin-bottom: 1.2rem;
+  }
+
+  .bar-item {
+    margin-bottom: 1rem;
+  }
+
+  .bar-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+  }
+
+  .bar-name {
+    font-size: 0.82rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .bar-value {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .bar-track {
+    height: 8px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+  }
+
+  .bar-fill.food { background: linear-gradient(90deg, var(--gold), #e8b850); }
+  .bar-fill.transport { background: linear-gradient(90deg, var(--earth), #a0785a); }
+  .bar-fill.energy { background: linear-gradient(90deg, var(--sage), var(--sage-light)); }
+  .bar-fill.offset { background: linear-gradient(90deg, var(--red-berries), #a04a4a); }
+
+  /* Offset section */
+  .offset-hero {
+    background: linear-gradient(135deg, #2d3d28, #4a5c40);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offset-hero::after {
+    content: '🌿';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.07;
+    bottom: -1rem;
+    right: -1rem;
+  }
+
+  .offset-hero h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+  }
+
+  .offset-hero p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 1.2rem;
+  }
+
+  .offset-stat {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    margin: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  .offset-stat strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.2rem;
+  }
+
+  .balance-msg {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  .balance-msg.positive {
+    background: rgba(122,140,110,0.12);
+    color: var(--sage-dark);
+    border: 1px solid rgba(122,140,110,0.3);
+  }
+
+  .balance-msg.negative {
+    background: rgba(139,58,58,0.08);
+    color: var(--red-berries);
+    border: 1px solid rgba(139,58,58,0.2);
+  }
+
+  /* ─── INFO TAB ─── */
+  .info-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(122,140,110,0.15);
+  }
+
+  .info-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .info-section h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--earth);
+    margin: 1.2rem 0 0.5rem;
+  }
+
+  .info-section p {
+    font-size: 0.83rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+  }
+
+  .info-section .source-tag {
+    display: inline-block;
+    background: rgba(90,107,78,0.1);
+    color: var(--sage-dark);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    margin: 0.1rem;
+    border: 1px solid rgba(90,107,78,0.2);
+  }
+
+  .ef-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-top: 0.8rem;
+  }
+
+  .ef-table th {
+    background: var(--cream-dark);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .ef-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid rgba(168,184,154,0.2);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .ef-table tr:last-child td { border-bottom: none; }
+  .ef-table .ef-val { font-weight: 500; color: var(--sage-dark); font-family: 'Cormorant Garamond', serif; font-size: 0.92rem; }
+  .ef-table .ef-zero { font-weight: 500; color: var(--moss); }
+  .ef-table .source-small { font-size: 0.65rem; color: var(--text-light); display: block; margin-top: 0.1rem; opacity: 0.8; }
+
+  /* Reset btn */
+  .reset-btn {
+    background: none;
+    border: 1.5px solid rgba(122,140,110,0.4);
+    color: var(--sage-dark);
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover { background: var(--sage-dark); color: #fff; }
+
+  /* ─── DATOS PERSONALES CARD ─── */
+  .personal-card {
+    background: linear-gradient(135deg, #fff 60%, #f0f5ed);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid rgba(122,140,110,0.25);
+    box-shadow: 0 4px 24px rgba(74,92,64,0.08);
+  }
+
+  .personal-card .card-title {
+    color: var(--sage-dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 520px) {
+    .input-group { grid-template-columns: 1fr; }
+  }
+
+  .input-group.full { grid-template-columns: 1fr; }
+
+  .input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .input-wrap label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .input-wrap input[type="text"],
+  .input-wrap input[type="email"],
+  .input-wrap select {
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid rgba(122,140,110,0.25);
+    border-radius: 10px;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+
+  .input-wrap input:focus,
+  .input-wrap select:focus {
+    outline: none;
+    border-color: var(--sage);
+    background: #fff;
+  }
+
+  .input-wrap input.error {
+    border-color: var(--red-berries);
+    background: rgba(139,58,58,0.04);
+  }
+
+  .privacy-note {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    margin-top: 0.8rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  /* ─── SUBMIT STATE ─── */
+  .submit-state {
+    text-align: center;
+    padding: 1.5rem;
+    display: none;
+  }
+
+  .submit-state .icon-big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .submit-state p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+  .submit-state strong { color: var(--sage-dark); }
+
+  /* Spinner */
+  .spinner {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Config banner */
+  .config-banner {
+    background: linear-gradient(135deg, #fff8e6, #fdf3d0);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--bark);
+    line-height: 1.6;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .config-banner code {
+    background: rgba(0,0,0,0.07);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    word-break: break-all;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    border-top: 1px solid rgba(122,140,110,0.15);
+    line-height: 1.6;
+  }
+
+  .footer em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--sage-dark);
+  }
+
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+    .field-input { justify-content: flex-start; }
+    .ef-table th:last-child, .ef-table td:last-child { display: none; }
+    .merienda-items { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="leaf-bg"></div>
+  <p class="reserve-name">Jardín de Monsalvo · Calamuchita, Córdoba</p>
+  <h1>Tu <em>huella de carbono</em><br>en nuestra Casa de Té</h1>
+  <p class="header-subtitle">Medí el impacto de tu visita y descubrí cómo apoyar la reserva te ayuda a compensarlo</p>
+</header>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>Cada viaje que hacés, cada alimento que consumís, cada kilowatt que usás deja una huella en el clima. En nuestra reserva queremos que puedas medirla, comprenderla y —lo más importante— compensarla apoyando la conservación del bosque nativo.</p>
+  <div class="divider">✦</div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('calculator')">🌿 Calculadora</button>
+    <button class="tab-btn" onclick="showTab('methodology')">📋 Metodología</button>
+    <button class="tab-btn" onclick="showTab('about')">🌳 La Reserva</button>
+  </div>
+
+  <!-- TAB: CALCULATOR -->
+  <div id="tab-calculator" class="tab-content active">
+
+    <!-- Merienda fija -->
+    <div class="merienda-info">
+      <div class="merienda-title">🍵 Tu merienda de hoy <span class="reserve-badge">✓ Para 2 personas</span></div>
+      <div class="merienda-items">
+        <div class="merienda-item"><span class="dot">◆</span><span>2 tazas de té de hierbas medicinales <em>(de la reserva)</em></span></div>
+        <div class="merienda-item"><span class="dot">◆</span><span>Porción de budín casero</span></div>
+        <div class="merienda-item"><span class="dot">◆</span><span>Porción de torta casera</span></div>
+        <div class="merienda-item"><span class="dot">◆</span><span>Panes caseros con mermeladas <em>(frutas de la reserva)</em></span></div>
+        <div class="merienda-item"><span class="dot">◆</span><span>Licuado de frutos rojos <em>(de la reserva)</em></span></div>
+      </div>
+      <p style="margin-top:1rem;font-size:0.78rem;color:#4a5c40;font-style:italic;line-height:1.6;border-top:1px solid rgba(201,168,76,0.2);padding-top:0.8rem;">
+        🌿 <strong>Esta merienda tiene una huella un 40% menor</strong> que una merienda equivalente en una ciudad, gracias a la eliminación del packaging y el transporte de los ingredientes recolectados en la reserva.
+      </p>
+    </div>
+
+    <!-- CARD: Alimentación -->
+    <div class="card gold">
+      <div class="card-title">🍞 Alimentos — Merienda Fija</div>
+      <div class="card-desc">La merienda está pre-calculada según sus ingredientes. Los productos marcados con 🌿 provienen de la reserva y tienen emisiones netas mínimas (recolección manual, sin transporte externo).</div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">🌿 Té de hierbas medicinales (reserva)</div>
+          <span class="field-hint">Recolección manual local. Factor de emisión ≈ 0 kg CO₂e.</span>
+        </div>
+        <div class="field-input">
+          <input type="number" value="0" readonly style="background:#eee;opacity:0.7">
+          <span class="unit-label">kg CO₂e</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">🌿 Mermelada casera (frutas de la reserva)</div>
+          <span class="field-hint">Ingrediente local. Emisiones por el azúcar: 0.05 kg CO₂e estimado.</span>
+        </div>
+        <div class="field-input">
+          <input type="number" value="0.05" readonly style="background:#eee;opacity:0.7">
+          <span class="unit-label">kg CO₂e</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">🌿 Licuado de frutos rojos (reserva)</div>
+          <span class="field-hint">Fruta local. Emisiones por la leche/agua base: ~0.12 kg CO₂e.</span>
+        </div>
+        <div class="field-input">
+          <input type="number" value="0.12" readonly style="background:#eee;opacity:0.7">
+          <span class="unit-label">kg CO₂e</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">Pan casero (harina, huevos, levadura)</div>
+          <span class="field-hint">~150g de ingredientes comprados (harina, huevos). EF promedio 1.2 kg CO₂e/kg.</span>
+        </div>
+        <div class="field-input">
+          <input type="number" value="0.18" readonly style="background:#eee;opacity:0.7">
+          <span class="unit-label">kg CO₂e</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">Budín + torta caseros (harina, azúcar, manteca, huevos)</div>
+          <span class="field-hint">~250g ingredientes/porción (2p). EF promedio ponderado ≈ 2.1 kg CO₂e/kg.</span>
+        </div>
+        <div class="field-input">
+          <input type="number" value="0.53" readonly style="background:#eee;opacity:0.7">
+          <span class="unit-label">kg CO₂e</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD: Transporte -->
+    <div class="card earth">
+      <div class="card-title">🚗 Tu Viaje hasta la Reserva</div>
+      <div class="card-desc">El transporte suele ser la mayor fuente de emisiones en una visita. Ingresá la distancia total de ida y vuelta desde tu punto de origen.</div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">Distancia total recorrida (ida + vuelta)</div>
+          <span class="field-hint">Ej: desde Villa del Dique ≈ 60 km, desde Córdoba Capital ≈ 200 km</span>
+        </div>
+        <div class="field-input">
+          <input type="number" id="distancia" value="0" min="0" max="2000" placeholder="0">
+          <span class="unit-label">km</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">Cantidad de personas en el vehículo</div>
+          <span class="field-hint">Compartir el auto divide las emisiones entre los viajantes</span>
+        </div>
+        <div class="field-input">
+          <input type="number" id="personas_auto" value="2" min="1" max="8">
+          <span class="unit-label">pers.</span>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <div class="field-label" style="margin-bottom:0.6rem;">Tipo de vehículo</div>
+        <div class="transport-grid">
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-auto" value="auto" checked>
+            <label for="v-auto"><span class="icon">🚗</span>Auto naftero</label>
+          </div>
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-diesel" value="diesel">
+            <label for="v-diesel"><span class="icon">🚐</span>Auto/camioneta diesel</label>
+          </div>
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-hibrido" value="hibrido">
+            <label for="v-hibrido"><span class="icon">⚡</span>Híbrido/eléctrico</label>
+          </div>
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-moto" value="moto">
+            <label for="v-moto"><span class="icon">🏍️</span>Moto</label>
+          </div>
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-bus" value="bus">
+            <label for="v-bus"><span class="icon">🚌</span>Colectivo</label>
+          </div>
+          <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-bici" value="bici">
+            <label for="v-bici"><span class="icon">🚲</span>Bici / a pie</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD: Energía -->
+    <div class="card">
+      <div class="card-title">⚡ Energía en la Casa de Té</div>
+      <div class="card-desc">Tu visita contribuye al consumo energético del local (cocina, iluminación, hervidor, etc.). Estimamos la fracción proporcional por persona-visita.</div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">Duración de tu visita</div>
+          <span class="field-hint">El consumo energético por persona se asigna proporcionalmente al tiempo</span>
+        </div>
+        <div class="field-input">
+          <input type="number" id="duracion" value="1.5" min="0.5" max="5" step="0.5">
+          <span class="unit-label">horas</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <div class="field-label">¿La casa de té usa energía solar?</div>
+          <span class="field-hint">Si hay paneles solares, las emisiones eléctricas se reducen significativamente</span>
+        </div>
+        <div class="field-input" style="gap:0.8rem;">
+          <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.82rem;cursor:pointer;">
+            <input type="radio" name="solar" value="no" checked> No
+          </label>
+          <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.82rem;cursor:pointer;">
+            <input type="radio" name="solar" value="parcial"> Parcial
+          </label>
+          <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.82rem;cursor:pointer;">
+            <input type="radio" name="solar" value="si"> Sí, 100%
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD: Datos personales -->
+    <div class="personal-card">
+      <div class="card-title">👤 Tus datos de contacto</div>
+      <div class="card-desc">Registramos tu huella para llevar un seguimiento y poder compartir el impacto colectivo de la reserva. Tus datos no se comparten con terceros.</div>
+
+      <div class="input-group">
+        <div class="input-wrap">
+          <label for="inp-nombre">Nombre *</label>
+          <input type="text" id="inp-nombre" placeholder="Ej: María">
+        </div>
+        <div class="input-wrap">
+          <label for="inp-apellido">Apellido *</label>
+          <input type="text" id="inp-apellido" placeholder="Ej: González">
+        </div>
+      </div>
+
+      <div class="input-group full">
+        <div class="input-wrap">
+          <label for="inp-email">Email *</label>
+          <input type="email" id="inp-email" placeholder="tu@email.com">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-wrap">
+          <label for="inp-ciudad">Ciudad de origen</label>
+          <input type="text" id="inp-ciudad" placeholder="Ej: Córdoba Capital">
+        </div>
+        <div class="input-wrap">
+          <label for="inp-frecuencia">¿Es tu primera visita?</label>
+          <select id="inp-frecuencia">
+            <option value="primera">Sí, primera vez</option>
+            <option value="ocasional">No, vengo ocasionalmente</option>
+            <option value="habitual">Soy visitante habitual</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="privacy-note">
+        🔒 Tus datos se guardan de forma segura en una planilla privada de Google Sheets accesible solo para la reserva.
+      </div>
+    </div>
+
+    <button class="calc-btn" id="btn-calcular" onclick="calcular()">
+      🌱 Calcular y registrar mi huella
+    </button>
+
+    <!-- RESULTS -->
+    <div id="results-panel">
+
+      <div style="height:1.5rem;"></div>
+      <div class="divider">Tus resultados</div>
+
+      <div class="result-hero">
+        <div class="result-label">Tu huella de carbono total</div>
+        <div class="result-total" id="result-total">–</div>
+        <div class="result-unit">kg CO₂ equivalente</div>
+        <div class="result-context" id="result-context"></div>
+      </div>
+
+      <div class="breakdown-card">
+        <div class="breakdown-title">Desglose por fuente de emisión</div>
+
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-name">🍞 Alimentos (merienda)</span>
+            <span class="bar-value" id="val-food">0</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill food" id="bar-food"></div></div>
+        </div>
+
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-name">🚗 Transporte</span>
+            <span class="bar-value" id="val-transport">0</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill transport" id="bar-transport"></div></div>
+        </div>
+
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-name">⚡ Energía (fracción por visita)</span>
+            <span class="bar-value" id="val-energy">0</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill energy" id="bar-energy"></div></div>
+        </div>
+      </div>
+
+      <!-- Compensación -->
+      <div class="offset-hero">
+        <h3>🌳 La Reserva compensa tu huella</h3>
+        <p>Los bosques nativos de Calamuchita capturan activamente CO₂ de la atmósfera. Al apoyar esta reserva, estás contribuyendo a mantener ese sumidero de carbono activo.</p>
+        <div>
+          <div class="offset-stat">
+            <strong id="offset-trees">–</strong>
+            árboles maduros durante 1 año
+          </div>
+          <div class="offset-stat">
+            <strong id="offset-m2">–</strong>
+            m² de bosque conservado (1 año)
+          </div>
+        </div>
+      </div>
+
+      <div class="breakdown-card">
+        <div class="breakdown-title">Balance carbono — Tu visita</div>
+        <div style="font-size:0.82rem;color:var(--text-light);margin-bottom:1.2rem;line-height:1.6;">
+          El bosque nativo de la reserva captura aproximadamente <strong>5–8 tCO₂/ha/año</strong> (estimado conservador para bosque serrano de Córdoba, según datos del IPCC y SAyDS). Consideramos un promedio de <strong>6 tCO₂/ha/año = 0.6 kg CO₂/m²/año</strong>.
+        </div>
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-name">🔴 Tu huella generada</span>
+            <span class="bar-value" id="bal-emitido">0</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill offset" id="bar-emitido" style="max-width:100%"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-meta">
+            <span class="bar-name">🟢 Captura de la reserva (por tu visita)</span>
+            <span class="bar-value" id="bal-captura">0</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill food" id="bar-captura" style="max-width:100%"></div></div>
+        </div>
+        <div class="balance-msg" id="balance-msg"></div>
+      </div>
+
+      <!-- Panel estado de guardado -->
+      <div id="save-status" style="margin-bottom:1rem;display:none;"></div>
+
+      <button class="reset-btn" onclick="resetForm()">← Calcular de nuevo</button>
+
+    </div>
+
+  </div><!-- end tab calculator -->
+
+  <!-- TAB: METHODOLOGY -->
+  <div id="tab-methodology" class="tab-content">
+
+    <div class="info-section">
+      <h3>Marco metodológico</h3>
+      <p>Esta calculadora sigue los lineamientos del <strong>GHG Protocol (Corporate Standard)</strong>, las directrices del <strong>IPCC 2006/2019</strong> para inventarios nacionales, y la metodología <strong>ISO 14064-1</strong> para cuantificación de emisiones a nivel organizacional. Las emisiones se expresan en <strong>kg CO₂ equivalente (CO₂e)</strong> usando el Potencial de Calentamiento Global a 100 años (GWP100) del <strong>Quinto Informe del IPCC (AR5)</strong>: CH₄ = 28, N₂O = 265.</p>
+      <div>
+        <span class="source-tag">GHG Protocol</span>
+        <span class="source-tag">IPCC 2019</span>
+        <span class="source-tag">ISO 14064-1</span>
+        <span class="source-tag">GWP100 AR5</span>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Alcances (Scopes) considerados</h3>
+      <p><strong>Alcance 1:</strong> Emisiones directas de combustión en el local (gas, leña si aplica).</p>
+      <p><strong>Alcance 2:</strong> Emisiones indirectas por electricidad consumida (red argentina).</p>
+      <p><strong>Alcance 3:</strong> Emisiones de la cadena de valor: transporte de visitantes, producción de ingredientes adquiridos externamente (harina, huevos, azúcar, manteca, leche).</p>
+      <p><em>Los ingredientes obtenidos directamente de la reserva (hierbas medicinales, frutas para mermelada y licuado) tienen un factor de emisión de campo prácticamente nulo, dado que no requieren transporte externo, fertilizantes sintéticos ni pesticidas.</em></p>
+    </div>
+
+    <div class="info-section">
+      <h3>Factores de emisión utilizados</h3>
+      <h4>Electricidad — Red Argentina</h4>
+      <table class="ef-table">
+        <thead>
+          <tr><th>Fuente</th><th>Factor</th><th>Referencia</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Red eléctrica argentina (grid)<br><span class="source-small">Mix energético 2022-2023</span></td>
+            <td class="ef-val">0.307 kg CO₂e/kWh</td>
+            <td>Secretaría de Energía / CAMMESA; IEA Emissions Factors 2023</td>
+          </tr>
+          <tr>
+            <td>Energía solar fotovoltaica<br><span class="source-small">Ciclo de vida del panel</span></td>
+            <td class="ef-val">~0.04 kg CO₂e/kWh</td>
+            <td>IPCC AR5 Capítulo 7, NREL 2021</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Transporte</h4>
+      <table class="ef-table">
+        <thead>
+          <tr><th>Medio</th><th>Factor</th><th>Referencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Auto nafta (promedio)</td><td class="ef-val">0.192 kg CO₂e/km</td><td>GHG Protocol / IPCC 2019 Tabla 3.2.1</td></tr>
+          <tr><td>Auto/camioneta diesel</td><td class="ef-val">0.171 kg CO₂e/km</td><td>GHG Protocol / IPCC 2019</td></tr>
+          <tr><td>Híbrido/eléctrico</td><td class="ef-val">0.085 kg CO₂e/km</td><td>GHG Protocol (red AR 0.307 kg/kWh)</td></tr>
+          <tr><td>Moto</td><td class="ef-val">0.113 kg CO₂e/km</td><td>IPCC 2019 Tabla 3.2.1</td></tr>
+          <tr><td>Colectivo/ómnibus (por pasajero)</td><td class="ef-val">0.027 kg CO₂e/km</td><td>GHG Protocol Business Travel</td></tr>
+          <tr><td>Bicicleta / A pie</td><td class="ef-zero">≈ 0</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Alimentos (merienda)</h4>
+      <p>Los factores de emisión alimentarios utilizan el análisis de ciclo de vida (LCA) completo: producción agrícola, procesamiento, packaging y retail. La fuente principal es el meta-análisis de Poore &amp; Nemecek (2018), el estudio más completo disponible (38.700 granjas en 119 países).</p>
+      <table class="ef-table">
+        <thead>
+          <tr><th>Ingrediente</th><th>Factor</th><th>Fuente</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hierbas medicinales (reserva)</td><td class="ef-zero">≈ 0 kg CO₂e/kg</td><td>Recolección manual local, sin insumos externos</td></tr>
+          <tr><td>Frutas de la reserva (frutos rojos, frutas mermelada)</td><td class="ef-zero">≈ 0 kg CO₂e/kg</td><td>Ídem anterior</td></tr>
+          <tr><td>Harina de trigo</td><td class="ef-val">0.8 kg CO₂e/kg</td><td>Poore &amp; Nemecek (2018), FAOSTAT</td></tr>
+          <tr><td>Huevos</td><td class="ef-val">4.2 kg CO₂e/kg</td><td>Poore &amp; Nemecek (2018)</td></tr>
+          <tr><td>Azúcar</td><td class="ef-val">3.0 kg CO₂e/kg</td><td>Poore &amp; Nemecek (2018)</td></tr>
+          <tr><td>Manteca</td><td class="ef-val">9.0 kg CO₂e/kg</td><td>Poore &amp; Nemecek (2018)</td></tr>
+          <tr><td>Leche entera</td><td class="ef-val">3.15 kg CO₂e/L</td><td>Poore &amp; Nemecek (2018)</td></tr>
+          <tr><td>Levadura / sal</td><td class="ef-val">~1.0 kg CO₂e/kg</td><td>Ecoinvent v3 / literatura general</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.8rem;font-style:italic;">El factor de emisión de la merienda fija para 2 personas se calculó desagregando las recetas típicas (pan, budín, torta) y ponderando cada ingrediente por su peso aproximado. Total estimado: <strong>0.88 kg CO₂e</strong> por servicio para 2 personas.</p>
+
+      <h4>Capturas de carbono — Bosque nativo serrano</h4>
+      <p>La tasa de captura de carbono del bosque nativo de Córdoba se estimó usando datos del IPCC (2006 AFOLU, Tabla 4.9) para bosques templados secos de Sudamérica, combinados con el Inventario de Gases de Efecto Invernadero de Argentina (SAyDS) y estudios locales de biomasa del bosque chaqueño serrano. Se adoptó un valor conservador de <strong>6 tCO₂/ha/año</strong> (rango: 5–8 tCO₂/ha/año).</p>
+      <div>
+        <span class="source-tag">IPCC 2006 AFOLU Tabla 4.9</span>
+        <span class="source-tag">SAyDS — Inventario GEI Argentina</span>
+        <span class="source-tag">FAOSTAT Forest Carbon</span>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Incertidumbre y limitaciones</h3>
+      <p>Los factores de emisión utilizados son valores promedio globales o regionales. Los valores reales pueden variar según prácticas agrícolas locales, fuente específica de energía, condición del rodeo y distancias exactas de transporte. Se recomienda considerar una incertidumbre de ±30–40% en los resultados, consistente con los niveles de incertidumbre establecidos en el Tier 1 del IPCC.</p>
+      <p>Esta calculadora tiene fines educativos y de concientización. Para inventarios formales de GEI con fines de reporte o certificación, se recomienda contratar a un verificador independiente certificado bajo ISO 14064-3.</p>
+    </div>
+
+
+  </div><!-- end tab methodology -->
+
+  <!-- TAB: ABOUT -->
+  <div id="tab-about" class="tab-content">
+
+    <div class="info-section">
+      <h3>🌳 La Reserva Natural Privada</h3>
+      <p>Ubicada en Monsalvo, departamento Calamuchita, provincia de Córdoba, nuestra reserva natural privada protege una porción del bosque serrano nativo de las Sierras Grandes. Este ecosistema, dominado por especies como el molle, el espinillo, el coco y diversas hierbas medicinales autóctonas, es un refugio de biodiversidad y un sumidero activo de carbono.</p>
+    </div>
+
+    <div class="info-section">
+      <h3>🌿 La Casa de Té en la Naturaleza</h3>
+      <p>Nuestra casa de té nació como una forma de conectar a las personas con el ecosistema que nos rodea. Todos los productos que servimos provienen o se elaboran con ingredientes de la reserva: las hierbas medicinales para el té, las frutas para las mermeladas y los licuados.</p>
+      <p>Al visitarnos, apoyás directamente la conservación del bosque nativo. Cada visita contribuye al mantenimiento del predio, las tareas de restauración ecológica y la protección frente al avance de actividades extractivas.</p>
+    </div>
+
+    <div class="info-section">
+      <h3>♻️ ¿Por qué medir nuestra huella?</h3>
+      <p>En la Reserva creemos que la transparencia ambiental es parte del compromiso con la naturaleza. No queremos esconder el impacto que tiene visitarnos —el transporte, la energía, los alimentos— sino todo lo contrario: hacerlo visible para poder comprenderlo, reducirlo donde sea posible, y compensarlo activamente a través de la conservación del bosque.</p>
+      <p>Esta calculadora nació de esa convicción: la medición honesta es el primer paso hacia la acción real.</p>
+      <div style="margin-top:1rem;">
+        <span class="source-tag">🌱 Reserva libre de agroquímicos</span>
+        <span class="source-tag">♻️ Residuos zero en proceso</span>
+        <span class="source-tag">💧 Agua de manantial propio</span>
+      </div>
+    </div>
+
+  </div><!-- end tab about -->
+
+</div><!-- end container -->
+
+<footer class="footer">
+  <em>Jardín de Monsalvo · Calamuchita, Córdoba</em><br>
+  Calculadora desarrollada con base en estándares IPCC 2019, GHG Protocol y Poore &amp; Nemecek (2018) · Uso educativo
+</footer>
+
+<script>
+  // ══════════════════════════════════════════════
+  // CONFIGURACIÓN — pegá aquí tu URL de Google Apps Script
+  // (Ver instrucciones en la sección "Cómo conectar Google Sheets")
+  // ══════════════════════════════════════════════
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxgoqcFUGlagSPxXmGt5hVSFLM61VIrkfU9O1W7DrfV3pn3HjW-EDHln6-uJ2QzvrT2/exec';
+
+  // ─── TABS ───
+  function showTab(name) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ─── FACTORES DE EMISIÓN ───
+  const EF_VEHICULO = {
+    auto:    0.192,
+    diesel:  0.171,
+    hibrido: 0.085,
+    moto:    0.113,
+    bus:     0.027,
+    bici:    0
+  };
+
+  const CONSUMO_KW = 5;
+  const VISITAS_SIMULTANEAS = 6;
+  const EF_GRID_AR = 0.307;
+  const EF_SOLAR = 0.04;
+  const FOOD_EMISSIONS = 0.88;
+  const CAPTURA_KG_M2_ANIO = 0.6;
+  const CAPTURA_KG_ARBOL_ANIO = 10;
+
+  // ─── VALIDACIÓN ───
+  function validarFormulario() {
+    const campos = [
+      { id: 'inp-nombre',   msg: 'Por favor ingresá tu nombre.' },
+      { id: 'inp-apellido', msg: 'Por favor ingresá tu apellido.' },
+      { id: 'inp-email',    msg: 'Por favor ingresá tu email.' }
+    ];
+    let ok = true;
+    campos.forEach(c => {
+      const el = document.getElementById(c.id);
+      const val = el.value.trim();
+      if (!val || (c.id === 'inp-email' && !val.includes('@'))) {
+        el.classList.add('error');
+        el.placeholder = c.msg;
+        ok = false;
+      } else {
+        el.classList.remove('error');
+      }
+    });
+    return ok;
+  }
+
+  // ─── CALCULAR ───
+  function calcular() {
+    if (!validarFormulario()) {
+      document.getElementById('inp-nombre').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Transporte
+    const distancia = parseFloat(document.getElementById('distancia').value) || 0;
+    const personas  = parseInt(document.getElementById('personas_auto').value) || 1;
+    const vehiculo  = document.querySelector('input[name="vehiculo"]:checked').value;
+
+    let transporteTotal;
+    if (vehiculo === 'bus') {
+      transporteTotal = EF_VEHICULO.bus * distancia;
+    } else {
+      transporteTotal = (EF_VEHICULO[vehiculo] * distancia) / personas;
+    }
+
+    // Energía
+    const duracion = parseFloat(document.getElementById('duracion').value) || 1.5;
+    const solar    = document.querySelector('input[name="solar"]:checked').value;
+
+    let efElec;
+    if (solar === 'si') efElec = EF_SOLAR;
+    else if (solar === 'parcial') efElec = (EF_GRID_AR + EF_SOLAR) / 2;
+    else efElec = EF_GRID_AR;
+
+    const energiaKwh  = (CONSUMO_KW * duracion) / VISITAS_SIMULTANEAS;
+    const energiaEmis = energiaKwh * efElec;
+
+    const food  = FOOD_EMISSIONS;
+    const total = food + transporteTotal + energiaEmis;
+
+    // Mostrar resultados
+    document.getElementById('result-total').textContent = total.toFixed(2);
+
+    const contexto = total < 0.5
+      ? 'Una huella muy baja. ¡Gracias por tu compromiso!'
+      : total < 2
+      ? 'Equivale a conducir un auto nafta aproximadamente ' + Math.round(total / 0.192) + ' km.'
+      : total < 10
+      ? 'Equivale a encender una bombilla LED durante ' + Math.round(total / 0.307 * 1000 / 10) + ' horas de la red argentina.'
+      : 'Un largo camino recorrido. ¡La reserva te ayuda a compensarlo!';
+
+    document.getElementById('result-context').textContent = contexto;
+
+    const maxVal = Math.max(food, transporteTotal, energiaEmis, 0.01);
+    setBar('food',      food,            maxVal);
+    setBar('transport', transporteTotal, maxVal);
+    setBar('energy',    energiaEmis,     maxVal);
+
+    const arboles = Math.ceil(total / CAPTURA_KG_ARBOL_ANIO * 365);
+    const m2      = Math.ceil(total / (CAPTURA_KG_M2_ANIO / 365));
+
+    document.getElementById('offset-trees').textContent = arboles;
+    document.getElementById('offset-m2').textContent    = m2.toLocaleString('es-AR');
+
+    const capturaAsignada = total * 1.5;
+    setBar('emitido', total,           Math.max(total, capturaAsignada));
+    setBar('captura', capturaAsignada, Math.max(total, capturaAsignada));
+
+    document.getElementById('bal-emitido').textContent = total.toFixed(2) + ' kg CO₂e';
+    document.getElementById('bal-captura').textContent = capturaAsignada.toFixed(2) + ' kg CO₂e';
+
+    const balMsg = document.getElementById('balance-msg');
+    const neto   = capturaAsignada - total;
+    balMsg.className   = 'balance-msg positive';
+    balMsg.innerHTML   = `✅ <strong>Balance positivo:</strong> Al apoyar la reserva compensás tu huella y generás un crédito neto de aproximadamente <strong>${neto.toFixed(2)} kg CO₂e</strong> a favor del clima.`;
+
+    const panel = document.getElementById('results-panel');
+    panel.style.display = 'block';
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    setTimeout(() => {
+      document.querySelectorAll('.bar-fill').forEach(b => b.style.width = b.dataset.target || b.style.width);
+    }, 50);
+
+    // Enviar a Google Sheets
+    enviarASheets({
+      nombre:       document.getElementById('inp-nombre').value.trim(),
+      apellido:     document.getElementById('inp-apellido').value.trim(),
+      email:        document.getElementById('inp-email').value.trim(),
+      ciudad:       document.getElementById('inp-ciudad').value.trim() || '—',
+      frecuencia:   document.getElementById('inp-frecuencia').value,
+      distancia,
+      personas,
+      vehiculo,
+      duracion,
+      solar,
+      emision_alimentos:  food.toFixed(3),
+      emision_transporte: transporteTotal.toFixed(3),
+      emision_energia:    energiaEmis.toFixed(3),
+      total_kgco2e:       total.toFixed(3),
+      arboles_equiv:      arboles,
+      m2_bosque_equiv:    m2
+    });
+  }
+
+  // ─── ENVÍO A GOOGLE SHEETS ───
+  function enviarASheets(datos) {
+    const statusEl = document.getElementById('save-status');
+    statusEl.style.display = 'block';
+
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') {
+      statusEl.innerHTML = `<div style="background:#fff8e6;border:1.5px solid #c9a84c;border-radius:10px;padding:0.8rem 1rem;font-size:0.78rem;color:#6b4c00;line-height:1.6;">
+        ⚠️ <strong>Modo demo:</strong> Los datos NO se están guardando porque aún no configuraste la URL de Google Sheets.
+        Seguí las instrucciones en la sección <strong>"Metodología → Cómo conectar Google Sheets"</strong> para activar el registro.
+      </div>`;
+      return;
+    }
+
+    statusEl.innerHTML = `<div style="background:#f0f5ed;border:1.5px solid rgba(122,140,110,0.3);border-radius:10px;padding:0.8rem 1rem;font-size:0.82rem;color:#4a5c40;">
+      <span class="spinner"></span> Guardando tu registro...
+    </div>`;
+
+    const params = new URLSearchParams({ ...datos, timestamp: new Date().toLocaleString('es-AR') });
+
+    fetch(APPS_SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+      .then(() => {
+        statusEl.innerHTML = `<div style="background:#f0f5ed;border:1.5px solid rgba(122,140,110,0.4);border-radius:10px;padding:0.8rem 1rem;font-size:0.82rem;color:#4a5c40;line-height:1.5;">
+          ✅ <strong>¡Registro guardado!</strong> Tu huella fue registrada en la base de datos de la reserva. Gracias por contribuir a nuestra transparencia ambiental.
+        </div>`;
+      })
+      .catch(() => {
+        statusEl.innerHTML = `<div style="background:#fff0f0;border:1.5px solid rgba(139,58,58,0.3);border-radius:10px;padding:0.8rem 1rem;font-size:0.82rem;color:#8b3a3a;">
+          ⚠️ No se pudo guardar el registro automáticamente. Podés anotar tu resultado manualmente.
+        </div>`;
+      });
+  }
+
+  // ─── HELPERS ───
+  function setBar(id, value, max) {
+    const valEl = document.getElementById('val-' + id) || document.getElementById('bal-' + id);
+    const barEl = document.getElementById('bar-' + id);
+    const pct   = max > 0 ? Math.min((value / max) * 100, 100) : 0;
+    if (valEl) valEl.textContent = value.toFixed(3) + ' kg CO₂e';
+    if (barEl) {
+      barEl.style.width     = '0';
+      barEl.dataset.target  = pct + '%';
+      setTimeout(() => barEl.style.width = pct + '%', 100);
+    }
+  }
+
+  function resetForm() {
+    document.getElementById('results-panel').style.display = 'none';
+    document.getElementById('distancia').value    = 0;
+    document.getElementById('personas_auto').value = 2;
+    document.getElementById('duracion').value      = 1.5;
+    document.querySelector('#v-auto').checked      = true;
+    document.querySelector('input[value="no"]').checked = true;
+    document.getElementById('save-status').style.display = 'none';
+    // Limpiar datos personales
+    ['inp-nombre','inp-apellido','inp-email','inp-ciudad'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.classList.remove('error');
+    });
+    document.getElementById('inp-frecuencia').selectedIndex = 0;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Quitar error al escribir
+  ['inp-nombre','inp-apellido','inp-email'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', function() {
+      this.classList.remove('error');
+    });
+  });
+</script>
+
+</body>
+</html>
