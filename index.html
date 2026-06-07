@@ -1007,6 +1007,10 @@
             <label for="v-moto"><span class="icon">🏍️</span>Moto</label>
           </div>
 <div class="transport-option">
+            <input type="radio" name="vehiculo" id="v-gnc" value="gnc">
+            <label for="v-gnc"><span class="icon">🔵</span>Auto GNC</label>
+          </div>
+          <div class="transport-option">
             <input type="radio" name="vehiculo" id="v-bici" value="bici">
             <label for="v-bici"><span class="icon">🚲</span>Bici / a pie</label>
           </div>
@@ -1269,6 +1273,7 @@
         <tbody>
           <tr><td>Auto nafta (promedio)<br><span class="source-small">CO₂ + CH₄×28 + N₂O×265 (AR5), consumo 12 L/100km</span></td><td class="ef-val">0.199 kg CO₂e/km</td><td>SNIGEIAR 2025 (FE por litro) + GHG Protocol</td></tr>
           <tr><td>Auto/camioneta gasoil<br><span class="source-small">CO₂ + CH₄×28 + N₂O×265 (AR5), consumo 7 L/100km</span></td><td class="ef-val">0.174 kg CO₂e/km</td><td>SNIGEIAR 2025 (FE por litro) + GHG Protocol</td></tr>
+          <tr><td>Auto GNC<br><span class="source-small">CO₂ + CH₄×28 + N₂O×265 (AR5), consumo 10 m³/100km — SNIGEIAR 2025 Tabla 3</span></td><td class="ef-val">0.207 kg CO₂e/km</td><td>SNIGEIAR 2025 (FE por m³ GNC) + GHG Protocol</td></tr>
           <tr><td>Híbrido/eléctrico</td><td class="ef-val">0.088 kg CO₂e/km</td><td>GHG Protocol (red AR 0.286 kg CO₂e/kWh — SNIGEIAR 2025)</td></tr>
           <tr><td>Moto<br><span class="source-small">CO₂ + CH₄×28 + N₂O×265 (AR5), consumo 5 L/100km</span></td><td class="ef-val">0.116 kg CO₂e/km</td><td>SNIGEIAR 2025 (FE por litro) + GHG Protocol</td></tr>
           <tr><td>Bicicleta / A pie</td><td class="ef-zero">≈ 0</td><td>—</td></tr>
@@ -1405,9 +1410,13 @@
   // Moto: nafta, motor pequeño → 5L/100km
   //   CO2e/km = (2.238 + 0.001035×28 + 0.0000975×265) × 0.05 = 0.116
   // Híbrido/eléctrico: ~50% EF nafta + red AR 0.286 kg CO2e/kWh
+  // GNC (Tabla 3 SNIGEIAR 2025): CO2=1.95133 kg/m³, CH4=0.0031955 kg/m³, N2O=0.0001079 kg/m³
+  // CO2e/m³ = 1.95133 + 0.0031955×28 + 0.0001079×265 = 2.069 kg CO2e/m³
+  // Consumo típico GNC Argentina: 10 m³/100km → CO2e/km = 2.069 × 0.10 = 0.207
   const EF_VEHICULO = {
     auto:    0.199,  // kg CO2e/km — nafta, CO2+CH4+N2O, SNIGEIAR 2025
     diesel:  0.174,  // kg CO2e/km — gasoil, CO2+CH4+N2O, SNIGEIAR 2025
+    gnc:     0.207,  // kg CO2e/km — GNC, CO2+CH4+N2O, SNIGEIAR 2025 Tabla 3, 10 m³/100km
     hibrido: 0.088,  // kg CO2e/km — red AR 0.286 kg CO2e/kWh
     moto:    0.116,  // kg CO2e/km — nafta motor pequeño, CO2+CH4+N2O, SNIGEIAR 2025
     bici:    0
